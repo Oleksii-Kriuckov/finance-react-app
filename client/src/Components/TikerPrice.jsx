@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite'
 import { useDispatch, useSelector } from 'react-redux';
 
 
-const TikerPrice = observer(({children, el, result, ind, ...props }) => {
+const TikerPrice = observer(({children, el, ind, ...props }) => {
     const [time, setTime] = useState('');
     const [date, setDate] = useState('');
     // const [result, setResult] = useState(0);
@@ -23,7 +23,7 @@ const TikerPrice = observer(({children, el, result, ind, ...props }) => {
     const resultChange = (ind) => {
         // if (prevArray[ind].price) {
         // setResult(el.price / prevArray[ind].price)
-        console.log(result);
+        // console.log(result);
         // }
 
     }
@@ -41,7 +41,7 @@ const TikerPrice = observer(({children, el, result, ind, ...props }) => {
             <div className='text-start'>{el.ticker}</div>
             <div >{el.exchange}</div>
             <div >{el.price}</div>
-            <div >{children}</div>
+            <div >{children[ind]}</div>
             <div >{el.change_percent}</div>
             <div >{time}</div>
             <div >{date}</div>

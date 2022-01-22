@@ -11,10 +11,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const App = observer(() => {
   const dispath = useDispatch();
-  const prevArray = useSelector( state => state.prevArray)
-  const currentArray = useSelector( state => state.currentArray)
+  const prevArray = useSelector(state => state.prevArray)
+  const currentArray = useSelector(state => state.currentArray)
   // const [res, setRes] = useState([])
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState([]);
 
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const App = observer(() => {
     socket.emit('start');
     socket.on('ticker', function (response) {
       const resp = (Array.isArray(response) ? response : [response]);
-      dispath({type: "Change_Current_Array", payload: resp});
+      dispath({ type: "Change_Current_Array", payload: resp });
       // setRes(resp);
       // tickers.setResponce(resp)
       // console.log(resp);
@@ -31,9 +31,13 @@ const App = observer(() => {
   }, []);
 
   const tickersArray = useMemo(() => {
-    dispath({type: "Change_Prev_Array", payload: currentArray});
+    dispath({ type: "Change_Prev_Array", payload: currentArray });
+
     if (prevArray[0]) {
-      setResult(currentArray[0].price - prevArray[0].price);
+      setResult(currentArray.map((elem, ind, arr) =>
+        (arr[ind].price - prevArray[ind].price).toFixed(2)));
+    } else {
+      setResult(currentArray.map(elem => 0));
     }
   }, [currentArray]);
 
@@ -43,12 +47,12 @@ const App = observer(() => {
       <Header />
       {currentArray.map((el, ind) =>
         <TikerPrice
-        result={result}
+          // result={result}
           el={el}
           key={ind}
           ind={ind}
           style={{ background: ind % 2 === 0 ? "#eee" : "#ccc" }}
-        ></TikerPrice>
+        >{result}</TikerPrice>
       )}
     </div>
   );
