@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo, useContext } from 'react'
 import { Context } from '../index';
 import { observer } from 'mobx-react-lite'
 
-const TikerPrice = observer(({ el, arrPrev, ind, ...props }) => {
+const TikerPrice = observer(({children, el, arrPrev, ind, ...props }) => {
     const [time, setTime] = useState('');
     const [date, setDate] = useState('');
     const [result, setResult] = useState(0);
@@ -18,7 +18,7 @@ const TikerPrice = observer(({ el, arrPrev, ind, ...props }) => {
     const resultChange = () => {
         if (arrPrev[ind].price) {
         setResult(el.price / arrPrev[ind].price)
-        console.log(result);
+        // console.log(result);
         }
     }
 
@@ -35,7 +35,7 @@ const TikerPrice = observer(({ el, arrPrev, ind, ...props }) => {
             <div className='text-start'>{el.ticker}</div>
             <div >{el.exchange}</div>
             <div >{el.price}</div>
-            <div >{el.price - arrPrev[ind].price}</div>
+            <div >{children}</div>
             <div >{el.change_percent}</div>
             <div >{time}</div>
             <div >{date}</div>

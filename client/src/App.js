@@ -11,6 +11,7 @@ const App = observer(() => {
   const [res, setRes] = useState([])
   const { tickers } = useContext(Context)
   const [arrTickers, setArrTickers] = useState([]);
+  const [first, setfirst] = useState(0);
   // const [connect, setConnect] = useState(true)
 
   useEffect(() => {
@@ -27,7 +28,9 @@ const App = observer(() => {
 
   const tickersArray = useMemo(() => {
     setArrTickers(res);
-    // console.log(arrTickers);
+    if (arrTickers[0]) {
+      console.log(res[0].price - arrTickers[0].price);
+    }
   }, [res]);
 
   return (
@@ -35,7 +38,13 @@ const App = observer(() => {
 
       <Header />
       {res.map((el, ind) =>
-        <TikerPrice arrPrev={arrTickers} el={el} key={ind} ind={ind} style={{ background: ind % 2 === 0 ? "#eee" : "#ccc" }} />
+        <TikerPrice
+          arrPrev={arrTickers}
+          el={el}
+          key={ind}
+          ind={ind}
+          style={{ background: ind % 2 === 0 ? "#eee" : "#ccc" }}
+        ></TikerPrice>
       )}
     </div>
   );
