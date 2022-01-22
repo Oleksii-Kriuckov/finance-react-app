@@ -4,12 +4,12 @@ const http = require('http');
 const io = require('socket.io');
 const cors = require('cors');
 
-const FETCH_INTERVAL = 10000;
+const FETCH_INTERVAL = 20000;
 const PORT = process.env.PORT || 4000;
 
 const tickers = [
   'AAPL', // Apple
-  'GOOGL', // Alphabet
+  'GOOGL', // Alphabetcd server
   'MSFT', // Microsoft
   'AMZN', // Amazon
   'FB', // Facebook
