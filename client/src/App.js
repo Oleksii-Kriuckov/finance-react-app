@@ -13,6 +13,8 @@ const App = observer(() => {
   const dispath = useDispatch();
   const arrTickers = useSelector( state => state.array)
   const [res, setRes] = useState([])
+  const [result, setResult] = useState(0);
+
 
   useEffect(() => {
     const socket = io.connect('http://localhost:4000');
@@ -29,7 +31,7 @@ const App = observer(() => {
   const tickersArray = useMemo(() => {
     dispath({type: "Change_Array", payload: res});
     if (arrTickers[0]) {
-      console.log(res[0].price - arrTickers[0].price);
+      setResult(res[0].price - arrTickers[0].price);
     }
   }, [res]);
 
@@ -39,7 +41,7 @@ const App = observer(() => {
       <Header />
       {res.map((el, ind) =>
         <TikerPrice
-          // arrPrev={arrTickers}
+        result={result}
           el={el}
           key={ind}
           ind={ind}
