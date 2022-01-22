@@ -8,7 +8,7 @@ const TikerPrice = observer(({children, el, result, ind, ...props }) => {
     const [time, setTime] = useState('');
     const [date, setDate] = useState('');
     // const [result, setResult] = useState(0);
-    const arrTickers = useSelector( state => state.array)
+    const prevArray = useSelector( state => state.array)
 
 
     // const { tickers } = useContext(Context)
@@ -21,8 +21,8 @@ const TikerPrice = observer(({children, el, result, ind, ...props }) => {
     };
 
     const resultChange = (ind) => {
-        // if (arrPrev[ind].price) {
-        // setResult(el.price / arrPrev[ind].price)
+        // if (prevArray[ind].price) {
+        // setResult(el.price / prevArray[ind].price)
         console.log(result);
         // }
 
