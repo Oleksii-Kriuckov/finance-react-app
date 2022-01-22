@@ -10,7 +10,7 @@ body {
   margin: auto;
   width: 700px;
   display: grid;
-  grid-template-columns: 60px 70px repeat(2, 55px) 70px 60px 90px;
+  grid-template-columns: 60px 70px 55px repeat(2, 70px) 60px 90px;
   gap: 20px;
 }
 

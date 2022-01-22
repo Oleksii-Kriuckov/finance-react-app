@@ -47,7 +47,7 @@ const App = observer(() => {
       <Header />
       {currentArray.map((el, ind) =>
         <TikerPrice
-          // result={result}
+          result={result}
           el={el}
           key={ind}
           ind={ind}
