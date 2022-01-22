@@ -4,17 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ArrayTikers from './store/GlobalData';
-// import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
+import {store} from './store/store'
 
 export const Context = createContext(null)
 
-// store={store}
+// tickers={tickers}
 ReactDOM.render(
-  <Context.Provider value={{
-    tickers: new ArrayTikers()
-  }}>
+  <Provider store={store}  >
     <App />
-  </Context.Provider>,
+  </Provider>,
   document.getElementById('root')
 );
 

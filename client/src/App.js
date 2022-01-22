@@ -5,14 +5,14 @@ import io from 'socket.io-client';
 import Header from './Components/Header';
 import { observer } from 'mobx-react-lite'
 import { Context } from './index';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 const App = observer(() => {
+  const dispath = useDispatch();
+  const arrTickers = useSelector( state => state.array)
   const [res, setRes] = useState([])
-  const { tickers } = useContext(Context)
-  const [arrTickers, setArrTickers] = useState([]);
-  const [first, setfirst] = useState(0);
-  // const [connect, setConnect] = useState(true)
 
   useEffect(() => {
     const socket = io.connect('http://localhost:4000');
@@ -27,7 +27,7 @@ const App = observer(() => {
   }, []);
 
   const tickersArray = useMemo(() => {
-    setArrTickers(res);
+    dispath({type: "Change_Array", payload: res});
     if (arrTickers[0]) {
       console.log(res[0].price - arrTickers[0].price);
     }
@@ -39,7 +39,7 @@ const App = observer(() => {
       <Header />
       {res.map((el, ind) =>
         <TikerPrice
-          arrPrev={arrTickers}
+          // arrPrev={arrTickers}
           el={el}
           key={ind}
           ind={ind}
