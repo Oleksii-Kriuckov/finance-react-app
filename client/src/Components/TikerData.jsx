@@ -34,32 +34,18 @@ const TikerData = observer(({ children, el, result, ind, ...props }) => {
 
 
     return (
-        <TransitionGroup>
             <div {...props} className='scoreboard px-3 py-1 justify-content-center'>
                 <div className='text-start'>{el.ticker}</div>
                 <div >{el.exchange}</div>
-                <CSSTransition timeout={500} classNames="ticker_data_item"><div >{el.price}</div></CSSTransition>
-
-                
-                    <div style={{ background: children[ind] > 0 ? 'rgb(0, 250, 0)' : (children[ind] < 0 ? 'rgb(250, 70, 70)' : 'transparent') }}>
-                        {/* <CSSTransition timeout={500} classNames="ticker_data_item"></CSSTransition> */}
-                            {/* <div></div> */}
-                                {children[ind]}
-                        
-                    </div>
-                
-                <CSSTransition timeout={500} classNames="ticker_data_item">
-                    <div style={{ background: children[ind] > 0 ? 'rgb(0, 250, 0)' : (children[ind] < 0 ? 'rgb(250, 70, 70)' : 'transparent') }}>
-                        {changePercent + '%'}
-                    </div>
-                </CSSTransition>
-
-
-
+                <div style={{ background: children[ind] > 0 ? 'rgb(0, 250, 0)' : (children[ind] < 0 ? 'rgb(250, 70, 70)' : 'transparent') }}>
+                    {children[ind]}
+                </div>
+                <div style={{ background: children[ind] > 0 ? 'rgb(0, 250, 0)' : (children[ind] < 0 ? 'rgb(250, 70, 70)' : 'transparent') }}>
+                    {changePercent + '%'}
+                </div>
                 <div >{time}</div>
                 <div >{date}</div>
             </div>
-        </TransitionGroup>
     )
 })
 

@@ -43,7 +43,6 @@ const App = observer(() => {
 
   return (
     <div className="App " >
-
       <Header />
       {currentArray.map((el, ind) =>
         <TikerData
