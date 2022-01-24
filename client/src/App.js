@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect, useContext, useMemo } from 'react';
-import TikerPrice from './Components/TikerPrice';
+import TikerData from './Components/TikerData';
 import io from 'socket.io-client';
 import Header from './Components/Header';
 import { observer } from 'mobx-react-lite'
@@ -46,13 +46,13 @@ const App = observer(() => {
 
       <Header />
       {currentArray.map((el, ind) =>
-        <TikerPrice
+        <TikerData
           result={result}
           el={el}
           key={ind}
           ind={ind}
           style={{ background: ind % 2 === 0 ? "#eee" : "#ccc" }}
-        >{result}</TikerPrice>
+        >{result}</TikerData>
       )}
     </div>
   );
