@@ -30,22 +30,20 @@ const TikerData = observer(({ children, el, result, ind, ...props }) => {
         resultChange(ind)
     }, [el]);
 
-
-
-
     return (
-            <div {...props} className='scoreboard px-3 py-1 justify-content-center'>
-                <div className='text-start'>{el.ticker}</div>
-                <div >{el.exchange}</div>
-                <div style={{ background: children[ind] > 0 ? 'rgb(0, 250, 0)' : (children[ind] < 0 ? 'rgb(250, 70, 70)' : 'transparent') }}>
-                    {children[ind]}
-                </div>
-                <div style={{ background: children[ind] > 0 ? 'rgb(0, 250, 0)' : (children[ind] < 0 ? 'rgb(250, 70, 70)' : 'transparent') }}>
-                    {changePercent + '%'}
-                </div>
-                <div >{time}</div>
-                <div >{date}</div>
+        <div {...props} className='scoreboard px-3 py-1 justify-content-center'>
+            <div className='text-start'>{el.ticker}</div>
+            <div >{el.exchange}</div>
+            <div >{el.price}</div>
+            <div style={{ background: children[ind] > 0 ? 'rgb(0, 250, 0)' : (children[ind] < 0 ? 'rgb(250, 70, 70)' : 'transparent') }}>
+                {children[ind]}
             </div>
+            <div style={{ background: children[ind] > 0 ? 'rgb(0, 250, 0)' : (children[ind] < 0 ? 'rgb(250, 70, 70)' : 'transparent') }}>
+                {changePercent + '%'}
+            </div>
+            <div >{time}</div>
+            <div >{date}</div>
+        </div>
     )
 })
 

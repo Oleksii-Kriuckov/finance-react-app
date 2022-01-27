@@ -12,7 +12,7 @@ body {
   display: grid;
   grid-template-columns: 60px 70px 55px repeat(2, 70px) 60px 90px;
   gap: 20px;
-}
+} 
 
 .headerItem {
   display: flex;

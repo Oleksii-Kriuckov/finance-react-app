@@ -1,0 +1,14 @@
+.ticker_data_item-enter { /*Start animation for appearance element*/
+    transform: translateY(-60px);
+  }
+  .ticker_data_item-enter-active {
+    transform: translateY(0px);
+    transition: all 500ms ease-in;
+  }
+  .ticker_data_item-exit { /*Start animation for disappearance element*/
+    opacity: 1;
+  }
+  .ticker_data_item-exit-active {
+    transform: translateY(-60px);
+    transition: all 500ms ease-in;
+  }
