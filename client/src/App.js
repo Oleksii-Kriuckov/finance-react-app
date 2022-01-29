@@ -6,6 +6,7 @@ import Header from './Components/Header';
 import { observer } from 'mobx-react-lite'
 import { Context } from './index';
 import { useDispatch, useSelector } from 'react-redux';
+import SearchTickers from './Components/SearchTickers';
 
 
 
@@ -43,6 +44,7 @@ const App = observer(() => {
 
   return (
     <div className="App " >
+      <SearchTickers/>
       <Header />
       {currentArray.map((el, ind) =>
         <TikerData
