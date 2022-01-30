@@ -29,6 +29,10 @@ const App = observer(() => {
       // console.log(resp);
       // socket.on('connect', function(messege){console.log(messege);})
     })
+    socket.on('dispatch', function( response ) {
+      const res = (Array.isArray(response) ? response : [response]);
+      console.log(res);
+    })
   }, []);
 
   const tickersArray = useMemo(() => {

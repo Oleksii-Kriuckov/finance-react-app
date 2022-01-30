@@ -4,19 +4,19 @@ const http = require('http');
 const io = require('socket.io');
 const cors = require('cors');
 
-const FETCH_INTERVAL = 10000;
+const FETCH_INTERVAL = 5000;
 const PORT = process.env.PORT || 4000;
 
 const tickers = [
-  'AAPL', // Apple
-  'GOOGL', // Alphabetcd server
-  'MSFT', // Microsoft
-  'AMZN', // Amazon
-  'FB', // Facebook
-  'TSLA', // Tesla
+  { name: "Apple", ticker: 'AAPL', exchange: 'NASDAQ' },
+  { name: "Alphabetcd server", ticker: 'GOOGL', exchange: 'NASDAQ' },
+  { name: "Microsoft", ticker: 'MSFT', exchange: 'NASDAQ' },
+  { name: "Amazon.com Inc", ticker: "AMZN", exchange: 'NASDAQ' },
+  { name: "Meta Platforms, Inc.", ticker: 'FB', exchange: 'NASDAQ' },
+  { name: "Tesla", ticker: 'TSLA', exchange: 'NASDAQ' },
 ];
 
-const allTickers = [
+const allStocks = [
   { name: "Advanced Micro Devices, Inc.", ticker: 'AMD', exchange: 'NASDAQ' },
   { name: "Adobe Systems Incorporated", ticker: "ADBE", exchange: 'NASDAQ' },
   { name: "Alphabetcd server", ticker: 'GOOGL', exchange: 'NASDAQ' },
@@ -55,8 +55,8 @@ function utcDate() {
 function getQuotes(socket) {
 
   const quotes = tickers.map(ticker => ({
-    ticker,
-    exchange: 'NASDAQ',
+    ticker: ticker.ticker,
+    exchange: ticker.exchange,
     price: randomValue(100, 300, 2),
     change: randomValue(0, 200, 2),
     change_percent: randomValue(0, 1, 2),
@@ -77,6 +77,7 @@ function trackTickers(socket) {
     getQuotes(socket);
   }, FETCH_INTERVAL);
 
+  socket.emit('dispatch', allStocks)
   socket.on('disconnect', function () {
     clearInterval(timer);
     console.log("disconnection")

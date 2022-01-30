@@ -5,14 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 
-const TikerData = observer(({ children, el, result, ind, ...props }) => {
+const TikerData = ({ children, el, result, ind, ...props }) => {
     const [time, setTime] = useState('');
     const [date, setDate] = useState('');
     const [changePercent, setChangePercent] = useState(0);
     const prevArray = useSelector(state => state.array)
 
-
-    // const { tickers } = useContext(Context)
 
     const dateTime = (string) => {
         let ind1 = string.indexOf("T");
@@ -45,6 +43,6 @@ const TikerData = observer(({ children, el, result, ind, ...props }) => {
             <div >{date}</div>
         </div>
     )
-})
+}
 
 export default TikerData
