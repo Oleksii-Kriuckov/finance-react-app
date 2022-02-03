@@ -7,6 +7,8 @@ const cors = require('cors');
 const FETCH_INTERVAL = 5000;
 const PORT = process.env.PORT || 4000;
 
+const allStocks = require('./data')
+
 const tickers = [
   { name: "Apple", ticker: 'AAPL', exchange: 'NASDAQ' },
   { name: "Alphabetcd server", ticker: 'GOOGL', exchange: 'NASDAQ' },
