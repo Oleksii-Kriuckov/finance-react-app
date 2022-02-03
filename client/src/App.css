@@ -4,6 +4,7 @@
 
 body {
   background: #aaa;
+  --widthInput: 450px;
 }
 
 .scoreboard {
@@ -23,4 +24,26 @@ body {
 
 .time {
   gap: 20px;
+}
+
+#closeBtn {
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  line-height: 1;
+  font-size: larger;
+  position: absolute;
+  top: 4px;
+  right: 10px;
+}
+
+.dropdown {
+  background-color: #444;
+  width: var(--widthInput);
+  font-size: 16px;
+  color: #eee;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 100;
 }
